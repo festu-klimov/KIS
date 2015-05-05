@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace Telephony_selling.Models
 {
@@ -52,12 +54,12 @@ namespace Telephony_selling.Models
         public int ParamClassID { get; set; }
         [Display(Name = "Характеристика")]
         public string ParamClassName { get; set; }
-        public int Format { get; set; }
         public List<Parameters> Parameters { get; set; }
         public int ParamRateID { get; set; }
         public ParamRate ParamRate { get; set; }
         public List<ParamList> ParamList { get; set; }
         public int GroupOfParameterID { get; set; }
+        [Display(Name = "Группа параметров")]
         public GroupOfParameter GroupOfParameter { get; set; }
     }
     public class ParamList
@@ -118,9 +120,12 @@ namespace Telephony_selling.Models
     {
         public int ClientID { get; set; }
         [Display(Name = "Логин")]
+        [Remote("CheckLogin", "Account")]
+        [Required(ErrorMessage = "Введите логин")]
         public string Login { get; set; }
         [Display(Name = "Пароль")]
         [DataType(DataType.Password)]
+        [Required(ErrorMessage = "Введите пароль")]
         public string Password { get; set; }
         [Display(Name = "Подсказка")]
         public string PasswordHelp { get; set; }
@@ -138,6 +143,14 @@ namespace Telephony_selling.Models
         [RegularExpression(@"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}", ErrorMessage = "Некорректный адрес")]
         public string Mail { get; set; }
         public virtual List<Load> Load { get; set; }
+        [NotMapped]
+        [Display(Name = "Запомнить меня")]
+        public bool RememberMe { get; set; }
+        [NotMapped]
+        [DataType(DataType.Password)]
+        [Display(Name = "Повторите пароль")]
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "Пароли не совпадают")]
+        public string Repeat { get; set; }
     }
     public class Role
     {

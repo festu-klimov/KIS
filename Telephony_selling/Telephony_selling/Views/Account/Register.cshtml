@@ -1,4 +1,4 @@
-﻿@model Telephony_selling.Models.RegisterViewModel
+﻿@model Telephony_selling.Models.Client
 @{
     ViewBag.Title = "Регистрация";
 }
@@ -10,23 +10,78 @@
     @Html.AntiForgeryToken()
     <h4>Создайте новую учетную запись.</h4>
     <hr />
-    @Html.ValidationSummary("", new { @class = "text-danger" })
+    @Html.ValidationSummary(true)
+
     <div class="form-group">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(model => model.Login, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+            @Html.TextBoxFor(model => model.Login, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Login)
         </div>
     </div>
+
     <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(model => model.Password, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Password)
         </div>
     </div>
+
     <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(model => model.Repeat, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+            @Html.PasswordFor(model => model.Repeat, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Repeat)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PasswordHelp, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.PasswordHelp, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.PasswordHelp)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Family, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.Family, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Family)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Name, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Second, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.Second, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Second)
+        </div>
+    </div>
+    @Html.Hidden("RoleID", 2)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Phone, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.Phone, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Phone)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Mail, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.Mail, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Mail)
         </div>
     </div>
     <div class="form-group">
@@ -36,6 +91,3 @@
     </div>
 }
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
