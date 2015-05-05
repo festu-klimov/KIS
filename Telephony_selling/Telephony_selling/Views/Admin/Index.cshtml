@@ -1,0 +1,96 @@
+﻿@model Telephony_selling.Models.Role
+@{
+    ViewBag.Title = "Администрирование";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Администрирование</h2>
+<table class="table">
+    <tr>
+        <td colspan="6">
+            <b>
+                Базовые параметры
+            </b>
+        </td>
+    </tr>
+    <tr>
+        @if (Model.Autentification)
+        {
+            <td align="center">
+                <a href="\Account\UserList">
+                    <img src="\images\freedom500.jpg" width="150" height="120">
+                </a><br />
+                <a href="\Account\UserList">Списк пользователей</a>
+            </td>
+        }
+        @if (Model.EditItems)
+        {
+            <td align="center">
+                <a href="\items\listitems">
+                    <img src="\images\tovar.jpg" width="100" height="120">
+                </a><br />
+                <a href="\items\listitems">Список товаров</a>
+            </td>
+        }
+        @if (Model.Buy)
+        {
+            <td align="center">
+                <a href="\Basket\StatusItems">
+                    <img src="\images\Popolnenie.jpg" width="100" height="120">
+                </a><br />
+                <a href="\Basket\StatusItems">Статус заказов</a>
+            </td>
+        }
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    @if (Model.Library)
+    {
+        <tr>
+            <td colspan="6">
+                <b>Справочники</b>
+            </td>
+        </tr>
+        <tr>
+            <td align="center">
+                <a href="\ParamClass\Index">
+                    <img src="\images\yfggn.jpg" width="100" height="120">
+                </a><br />
+                <a href="\ParamClass\Index">Параметры товара</a>
+            </td>
+
+            <td align="center">
+                <a href="\RateT\Index">
+                    <img src="\images\dostavka-bomber1.jpg" width="100" height="120">
+                </a><br />
+                <a href="\RateT\Index">Категория товара</a>
+            </td>
+            <td align="center">
+                <a href="\Discount\Index">
+                    <img src="\images\1373.jpg" width="100" height="120">
+                </a><br />
+                <a href="\Discount\Index">Скидка</a>
+            </td>
+            <td align="center">
+                <a href="\StatusType\Index">
+                    <img src="\images\call.jpg" width="150" height="120">
+                </a><br />
+                <a href="\StatusType\Index">Статус заказов</a>
+            </td>
+            <td align="center">
+                <a href="\paramrate\index">
+                    <img src="\images\Vnimanie.jpg" width="100" height="120">
+                </a><br />
+                <a href="\paramrate\index">Размерности</a>
+            </td>
+            <td align="center">
+                <a href="\groupofparameter\index">
+                    <img src="\images\Popolnenie.jpg" width="100" height="120">
+                </a><br />
+                <a href="\groupofparameter\index">Группы товаров</a>
+            </td>
+        </tr>
+    }
+</table>
+
